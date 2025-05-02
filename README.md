@@ -1,6 +1,6 @@
 # MicroController Code Hub 🚀  
 *A collection projects for IoT development*
----
+
 ## **⚡ Quick Setup Guide (Arduino IDE)**
 
 ### 1. **Install Arduino IDE**  
