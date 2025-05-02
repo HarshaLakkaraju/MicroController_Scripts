@@ -24,12 +24,12 @@
 #include <ArduinoJson.h>
 
 // Wi-Fi credentials
-const char* ssid        = "loading....";
-const char* password    = "fuckyou@";
+const char* ssid        = " wifi name ";
+const char* password    = "wifi password ";
 
 // Simple login credentials (for demonstration only)
-const char* adminUser   = "haxxha";
-const char* adminPass   = "lakkaraju@100";
+const char* adminUser   = "usename";
+const char* adminPass   = "password";
 
 // EEPROM and Webhook settings
 #define EEPROM_SIZE 512
