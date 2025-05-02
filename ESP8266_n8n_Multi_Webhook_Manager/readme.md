@@ -34,10 +34,11 @@ Change "admin" and "admin123" to any username and password of your choice.
 
 Below are placeholders for interface screenshots, which you can replace with real images:
 
-![Login Page](https://github.com/HarshaLakkaraju/MicroController_Scripts/blob/main/ESP8266_n8n_Multi_Webhook_Manager/data/login%20page%20(1).png)
+![login page](https://github.com/user-attachments/assets/24ecfd0b-d539-46b1-80c8-536a63b89240)
 
-![Main Webhook Dashboard
-(https://github.com/HarshaLakkaraju/MicroController_Scripts/blob/main/ESP8266_n8n_Multi_Webhook_Manager/data/main%20page.png)
+
+![main page](https://github.com/user-attachments/assets/6067b96d-19f6-4eb3-8205-865ee393d836)
+
 
 Use these screenshots or your own to visualize how to navigate through the web UI.
 
