@@ -18,7 +18,7 @@ Inside the code, look for the WiFi credentials section:
 const char* ssid        = "<<your wi-fi name>>";
 const char* password    = "<<password>>";
 ```
-Replace "loading...." and "fuckyou@" with your personal Wi-Fi SSID and password.
+Replace "username" and "password" with your personal Wi-Fi SSID and password.
 
 ## How to Change Login Credentials
 
@@ -28,7 +28,7 @@ Inside the code, locate the variables for login authentication:
 const char* adminUser   = "<<website username>>";
 const char* adminPass   = "<<login passwiord>>";
 ```
-Change "admin" and "admin123" to any username and password of your choice.
+Change "password" and "adminname" to any username and password of your choice.
 
 ## Web Interface Preview
 
