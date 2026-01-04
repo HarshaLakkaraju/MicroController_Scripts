@@ -95,7 +95,7 @@ void loop() {
   WiFiClient client = server.available();
   
   if (client) {
-    Serial.println("\n📡 New client connected");
+    Serial.println("\n New client connected");
     
     // Read request
     String request = "";
@@ -109,15 +109,15 @@ void loop() {
     
     // Parse and handle request
     if (request.indexOf("GET /press") != -1) {
-      Serial.println("🔄 Button press requested");
+      Serial.println(" Button press requested");
       handlePress(client);
     } 
     else if (request.indexOf("GET /status") != -1) {
-      Serial.println("📊 Status requested");
+      Serial.println(" Status requested");
       handleStatus(client);
     }
     else if (request.indexOf("GET /") != -1) {
-      Serial.println("🌐 Web page requested");
+      Serial.println(" Web page requested");
       handleRoot(client);
     }
     else {
@@ -131,7 +131,7 @@ void loop() {
     // Close connection
     delay(10);
     client.stop();
-    Serial.println("✅ Client disconnected");
+    Serial.println(" Client disconnected");
   }
 }
 
@@ -143,7 +143,7 @@ void handlePress(WiFiClient &client) {
     client.println("Content-Type: text/plain");
     client.println();
     client.println("Busy: Button press in progress");
-    Serial.println("❌ Response: 503 Busy");
+    Serial.println(" Response: 503 Busy");
     return;
   }
   
@@ -153,7 +153,7 @@ void handlePress(WiFiClient &client) {
     client.println("Content-Type: text/plain");
     client.println();
     client.println("Error: WiFi disconnected");
-    Serial.println("❌ Response: 503 WiFi disconnected");
+    Serial.println(" Response: 503 WiFi disconnected");
     return;
   }
   
@@ -166,11 +166,11 @@ void handlePress(WiFiClient &client) {
   client.println("Button press started");
   
   // Process in background
-  Serial.println("🔄 Starting press sequence...");
+  Serial.println(" Starting press sequence...");
   pressButton();
   
   isPressing = false;
-  Serial.println("✅ Press sequence completed");
+  Serial.println(" Press sequence completed");
 }
 
 // ========== ACTUAL BUTTON PRESS ==========
@@ -248,7 +248,7 @@ void handleRoot(WiFiClient &client) {
   client.println("</head><body>");
   
   client.println("<div class='container'>");
-  client.println("<h1>🎮 PS5 Power Controller</h1>");
+  client.println("<h1>ESP32 PS5 Power Controller</h1>");
   
   client.println("<div class='status'>");
   client.println("<strong>IP:</strong> " + WiFi.localIP().toString() + "<br>");
@@ -285,11 +285,11 @@ void handleRoot(WiFiClient &client) {
   client.println("  fetch('/press')");
   client.println("    .then(r => r.text())");
   client.println("    .then(t => {");
-  client.println("      document.getElementById('message').innerHTML = '✅ ' + t;");
+  client.println("      document.getElementById('message').innerHTML = 'done! ' + t;");
   client.println("      setTimeout(updateStatus, 1000); // Update after press completes");
   client.println("    })");
   client.println("    .catch(e => {");
-  client.println("      document.getElementById('message').innerHTML = '❌ Error: ' + e;");
+  client.println("      document.getElementById('message').innerHTML = ' Error: ' + e;");
   client.println("      updateStatus();");
   client.println("    });");
   client.println("}");
@@ -306,7 +306,7 @@ void handleRoot(WiFiClient &client) {
 
 // ========== WiFi CONNECTION ==========
 void connectToWiFi() {
-  Serial.print("📡 Connecting to WiFi: ");
+  Serial.print(" Connecting to WiFi: ");
   Serial.print(ssid);
   Serial.print(" ... ");
   
@@ -323,7 +323,7 @@ void connectToWiFi() {
   }
   
   if (WiFi.status() == WL_CONNECTED) {
-    Serial.println(" ✅");
+    Serial.println(" ✓");
     Serial.print("   IP Address: ");
     Serial.println(WiFi.localIP());
     Serial.print("   Signal Strength: ");
@@ -331,7 +331,7 @@ void connectToWiFi() {
     Serial.println(" dBm");
     digitalWrite(ledPin, HIGH); // Solid LED when connected
   } else {
-    Serial.println(" ❌");
+    Serial.println(" X ");
     Serial.println("   Failed to connect!");
     digitalWrite(ledPin, LOW);
   }
