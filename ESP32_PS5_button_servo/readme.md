@@ -30,6 +30,11 @@ This project allows you to physically press your PS5 power button remotely using
 
 ## 🛠️ Hardware Requirements
 
+![ESP32 + Servo Wiring](assests\hardware_1.jpg)
+![ESP32 + Servo Wiring](assests\hardware_2.jpg)
+
+
+
 ### Required Components
 - **ESP32** development board (any variant)
 - **SG90 Servo Motor** (or compatible 5V servo)
@@ -119,6 +124,7 @@ Once uploaded and connected, the ESP32 will display its IP address in the Serial
 
 #### Web Interface
 Open the displayed IP in your browser to access the control panel.
+![ESP32 UI](assests\UI.png)
 
 #### Direct API Calls
 ```bash
