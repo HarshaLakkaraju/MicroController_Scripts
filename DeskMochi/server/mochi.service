@@ -1,0 +1,22 @@
+[Unit]
+Description=Mochi Ambient Animation Service
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=600
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=haxxha
+WorkingDirectory=/home/haxxha/server
+ExecStart=/usr/bin/python3 -u /home/haxxha/server/ambient.py
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+LogRateLimitIntervalSec=0
+MemoryMax=64M
+CPUQuota=10%
+
+[Install]
+WantedBy=multi-user.target
