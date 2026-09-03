@@ -24,9 +24,9 @@ while True:
         data = json.loads(response.read().decode())
         current_mode = data.get("mode", "UNKNOWN")
 
-        if current_mode == "SITTING":
+        if current_mode in ["SITTING", "IDLE"]:
             chosen_anim = random.choice(ANIMATIONS)
-            print(f"Mochi is SITTING. Triggering: {chosen_anim}")
+            print(f"Mochi is {current_mode}. Triggering: {chosen_anim}")
             post_data = urllib.parse.urlencode({"type": chosen_anim}).encode()
             urllib.request.urlopen(f"{MOCHI_URL}/notify", data=post_data, timeout=5)
         else:

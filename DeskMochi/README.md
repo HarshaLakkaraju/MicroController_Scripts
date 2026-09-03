@@ -262,7 +262,7 @@ curl -X POST http://mochi.local/notify -d "type=glitch"
 
 The most powerful setup is to run a lightweight Python script on your home server that periodically checks Mochi's status and sends ambient animations automatically while you work.
 
-### `mochi_ambient.py`
+### `server/ambient.py`
 
 ```python
 import urllib.request
@@ -330,7 +330,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 User=your_username
-ExecStart=/usr/bin/python3 /home/your_username/mochi_ambient.py
+ExecStart=/usr/bin/python3 /home/your_username/server/ambient.py
 Restart=on-failure
 RestartSec=30
 StartLimitIntervalSec=600
@@ -411,8 +411,8 @@ If `mode == "TIMESUP"`:
 - Send push notification to your phone
 - When you stand up, trigger `POST /pomodoro/stop`
 
-### Workflow 4: Ambient Life (Covered by `mochi_ambient.py` above)
-Every 5–15 minutes, poll status. If `SITTING`, send a random fun animation.
+### Workflow 4: Ambient Life (Covered by `server/ambient.py` above)
+Every 5–15 minutes, poll status. If `SITTING` or `IDLE`, send a random fun animation.
 
 ---
 
@@ -472,7 +472,7 @@ sudo systemctl restart mochi.service
 ```
 
 **Fix — Option B: Use the raw IP address**
-Find Mochi's IP from the OLED screen or your router's device list, then edit `mochi_ambient.py`:
+Find Mochi's IP from the OLED screen or your router's device list, then edit `server/ambient.py`:
 ```python
 # Change this:
 MOCHI_URL = "http://mochi.local"
@@ -522,8 +522,15 @@ This allows max 5 restarts within 10 minutes before systemd marks the service as
 DeskMochi/
 ├── DeskMochi.ino       ← Main firmware (Arduino IDE)
 ├── config.h            ← Wi-Fi credentials and all tunable constants
-├── mochi_ambient.py    ← Home server ambient animation script
-└── README.md           ← This file
+├── README.md           ← Complete documentation
+│
+└── server/             ← Home Linux server scripts & systemd service
+    ├── ambient.py      ← Background ambient animation script
+    ├── mochi.service   ← systemd service unit
+    ├── install.sh      ← One-command installer
+    ├── test_live.py    ← Test against real Mochi hardware
+    ├── test_mock.py    ← Test script logic offline
+    └── README.md       ← Server quick-start guide
 ```
 
 ---
